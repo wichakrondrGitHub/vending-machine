@@ -46,8 +46,9 @@ const VendingMachine: React.FC = () => {
   };
 
   const handleBuyProduct = () => {
-    if (products) {
+    if (invoiceProduct.length > 0) {
       if (calculateTotal(invoiceProduct).toFixed(2) < credit) {
+        debugger;
         dispatch(buyProduct());
         Swal.fire({
           title: "Enjoy!",
@@ -65,7 +66,7 @@ const VendingMachine: React.FC = () => {
     } else
       Swal.fire({
         title: "Purchase Failed",
-        text: "Product out of stock.",
+        text: "Your Cart Is Empty",
         icon: "warning",
       });
   };
