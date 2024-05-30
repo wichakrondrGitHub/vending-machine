@@ -2,6 +2,13 @@ import React from "react";
 import Wallet from "@/components/Wallet";
 import VendingMachine from "@/components/VendingMachine";
 import Invoice from "@/components/Invoice";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Vending Mechine",
+  description:
+    "This project is an online vending machine simulation built using Next.js 14, NextUI v2, Tailwind CSS, Tailwind Variants, TypeScript, Framer Motion, and next-themes",
+};
 
 const HomePage: React.FC = () => {
   return (
