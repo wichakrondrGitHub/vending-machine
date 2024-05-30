@@ -1,7 +1,6 @@
 import { products } from "@/data/products";
 import { Product } from "@/interface/product";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 interface VendingMachineState {
   products: Product[];
@@ -61,8 +60,35 @@ const vendingMachineSlice = createSlice({
         };
       }
     },
+    deSelectProduct(state, action: PayloadAction<string>) {
+      const productId = action.payload;
+
+      // Find the product in the invoice list
+      const invoiceProductIndex = state.invoiceProduct.findIndex(
+        (invoice) => invoice.id === productId
+      );
+
+      if (invoiceProductIndex >= 0) {
+        const invoiceProduct = state.invoiceProduct[invoiceProductIndex];
+
+        // Decrease the quantity of the product in the invoice list
+        if (invoiceProduct.quantity > 1) {
+          invoiceProduct.quantity -= 1;
+        } else {
+          // Remove the product from the invoice list if quantity is 1
+          state.invoiceProduct.splice(invoiceProductIndex, 1);
+        }
+
+        // Update the quantity of the deselected product in the products list
+        const productIndex = state.products.findIndex(
+          (product) => product.id === productId
+        );
+        if (productIndex >= 0) {
+          state.products[productIndex].quantity += 1;
+        }
+      }
+    },
     buyProduct(state) {
-      const product = state.selectedProduct;
       const total = state.invoiceProduct.reduce(
         (total, product) => total + product.price * product.quantity,
         0
@@ -73,6 +99,6 @@ const vendingMachineSlice = createSlice({
   },
 });
 
-export const { addCredit, selectProduct, buyProduct } =
+export const { addCredit, selectProduct, deSelectProduct, buyProduct } =
   vendingMachineSlice.actions;
 export default vendingMachineSlice.reducer;
