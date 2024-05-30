@@ -6,7 +6,6 @@ import { Button } from "@nextui-org/react";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
-// Import other images as needed
 
 const Wallet: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,14 +29,11 @@ const Wallet: React.FC = () => {
               className="flex flex-col items-center justify-center  bg-white  shadow-md text-sm font-bold  h-20"
             >
               <Image
-                // fill
                 width={50}
                 height={60}
                 src={`/moneys/${amount}.jpeg`}
                 alt={`${amount} Baht`}
-                // className="w-12 h-12 mb-2" // Adjust size and margin as needed
               />
-              {/* {amount.toLocaleString()} */}
             </Button>
           </motion.div>
         ))}

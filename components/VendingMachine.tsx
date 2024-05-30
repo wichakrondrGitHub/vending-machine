@@ -2,12 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@nextui-org/react";
 import { RootState } from "@/store/store";
-import {
-  addCredit,
-  buyProduct,
-  selectProduct,
-} from "@/store/slices/vendingMachineSlice";
-import { useState } from "react";
+import { buyProduct, selectProduct } from "@/store/slices/vendingMachineSlice";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import { Product } from "@/interface/product";
@@ -15,10 +10,9 @@ import { motion } from "framer-motion";
 import { calculateTotal } from "@/util/calculate";
 
 const VendingMachine: React.FC = () => {
-  const [isBuying, setBuying] = useState<boolean>(false);
-
-  const { credit, isSuccess, products, selectedProduct, invoiceProduct } =
-    useSelector((state: RootState) => state.vendingMachine);
+  const { credit, products, selectedProduct, invoiceProduct } = useSelector(
+    (state: RootState) => state.vendingMachine
+  );
 
   const dispatch = useDispatch();
 
