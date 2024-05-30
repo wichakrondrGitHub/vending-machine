@@ -25,11 +25,7 @@ const VendingMachine: React.FC = () => {
   const handleSelectProduct = (product: Product) => {
     if (product.quantity !== 0) {
       if (credit) {
-        const selected = selectedProduct
-          ? { ...product, quantity: (selectedProduct?.quantity || 0) + 1 }
-          : { ...product, quantity: 1 };
-
-        dispatch(selectProduct(selected));
+        dispatch(selectProduct(product));
       } else {
         Swal.fire({
           title: "Not enough credit",
