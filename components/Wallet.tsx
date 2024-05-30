@@ -22,7 +22,7 @@ const Wallet: React.FC = () => {
       <div className=" border-t border-white shadow-black shadow-[0_5px_60px_-15px_rgba(0,0,0,0.3)] rounded-lg h-16	w-full bg-amber-950 absolute bottom-0 left-0 z-10"></div>
       <div className="flex  w-ful 	gap-5 ">
         {[5, 10, 20, 100].map((amount) => (
-          <motion.div whileHover={{ y: -20 }}>
+          <motion.div whileHover={{ y: -20 }} key={"money-" + amount}>
             <Button
               key={amount}
               onClick={() => handleAddCredit(amount)}

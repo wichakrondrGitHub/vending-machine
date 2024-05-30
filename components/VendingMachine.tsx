@@ -68,7 +68,7 @@ const VendingMachine: React.FC = () => {
       </div>
       <div className="grid grid-cols-3 gap-4 mb-4">
         {products.map((product) => (
-          <div key={product.id} onClick={() => handleSelectProduct(product)}>
+          <button key={product.id} onClick={() => handleSelectProduct(product)}>
             <motion.div
               whileTap={
                 product.quantity > 0
@@ -104,7 +104,7 @@ const VendingMachine: React.FC = () => {
                 Select
               </Button>
             </motion.div>
-          </div>
+          </button>
         ))}
       </div>
       <div className="mt-4 justify-center flex flex-col">
