@@ -11,7 +11,7 @@ Make sure you have Node.js and npm installed on your machine.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/wichakrondrGitHub/vending-machine/edit/main/README.md
+   git clone https://github.com/wichakrondrGitHub/vending-machine
 
 2. Navigate into the project directory:
    ```bash
